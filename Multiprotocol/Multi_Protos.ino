@@ -463,5 +463,12 @@ const mm_protocol_definition multi_protocols[] = {
 	#if defined(NANORF_NRF24L01_INO)
 		{PROTO_NANORF,     STR_NANORF,    NO_SUBTYPE,            0, OPTION_NONE,    0, 0, SW_NRF,    NANORF_init,     NANORF_callback     },
 	#endif
+  #if defined(ELRS_SX1276_INO)
+    #if MULTI_5IN1_INTERNAL == T18
+    {PROTO_ELRS,   STR_ELRS,   STR_SUBTYPE_ELRS,   8, OPTION_NONE,    1, 0, 0,         ELRS_init,    ELRS_callback    },
+    #else // DIY & T-Lite
+    {PROTO_ELRS,   STR_ELRS,   STR_SUBTYPE_ELRS,   8, OPTION_RFPOWER, 1, 0, 0,         ELRS_init,    ELRS_callback    },
+    #endif
+  #endif
 		{0xFF,             nullptr,       nullptr,               0, 0,              0, 0, 0,         nullptr,         nullptr             }
 };
